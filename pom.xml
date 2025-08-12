@@ -10,15 +10,39 @@
     <packaging>pom</packaging>
     <modules>
         <module>chill_up_ui_back</module>
-        <module>chill_up_orchestrator</module>
-        <module>chill_up_application</module>
+        <module>chill_app_orchestrator</module>
+        <module>chill_app_application</module>
+        <module>chill_app_common</module>
     </modules>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.code.style>official</kotlin.code.style>
-        <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
+        <java.version>17</java.version>
+        <kotlin.version>1.9.23</kotlin.version>
+        <spring.boot.version>3.2.5</spring.boot.version>
+        <camunda.version>7.21.0</camunda.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Camunda BOM -->
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-bom</artifactId>
+                <version>${camunda.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <repositories>
         <repository>
